@@ -9,13 +9,16 @@ import Foundation
 import SwiftUI
 import CoreLocation
 
+
 struct Taxi: Hashable, Codable, Identifiable {
-    
     var id: Int
-    
+    var latitude: Double
+    var longtitude: Double
+
     private var coordinates: Coordinates
-    var locationCoordinates: CLLocationCoordinate2D {
-        CLLocationCoordinate2D (
+    
+    var locationCoordinate: CLLocationCoordinate2D {
+        CLLocationCoordinate2D(
             latitude: coordinates.latitude,
             longitude: coordinates.longtitude)
     }

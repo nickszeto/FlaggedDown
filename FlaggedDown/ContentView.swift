@@ -10,45 +10,44 @@ import UIKit
 
 struct ContentView: View {
     
+//    @EnvironmentObject var modelData: ModelData
+    
+//    var taxi: Taxi
+    
     @State private var showLabel = false
     
     var body: some View {
-                
-        VStack (alignment:.leading) {
-            HStack{
-                CircleImage(
-                    image: Image("taxilogo1x")
-                )
-                .offset(x:20)
-                Text("Flagged Down")
-                    .offset(x:150)
-                    .foregroundColor(.black)
-                    .font(.title)
-
-            }
-            MapKit()
-                .frame(height:500)
-            
-            HStack{
-                VStack {
-                    Button("Find me a Taxi") {
-                        showLabel.toggle()
+        NavigationView {
+            VStack (alignment:.leading) {
+                    MapView()
+                        .edgesIgnoringSafeArea(.all)
+                VStack (alignment: .leading) {
+                        HStack {
+                            Text("Something goes here")
+                        }
                     }
-                        .contentShape(Rectangle())
-                        .font(.title2)
-                        .padding(20)
-                    if showLabel {
-                        Text("Let's get a Taxi")
+                    .padding()
+                }
+            .navigationTitle("Flagged Down")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        print("Refresh")
+                    }) {
+                        Label("Send", systemImage: "arrow.clockwise")
                     }
                 }
             }
         }
-        .ignoresSafeArea()
     }
 }
 
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group {
+            ContentView()
+        }
     }
 }
